@@ -21,6 +21,15 @@ You can install them by:
 You can see all options by:
   thor -T
 
+When using thor you don't have to download Thorfile, simply just write:
+  thor install http://github.com/morgoth/cd2mp3/raw/master/Thorfile --as ripper --force
+
+Then you will have always available command thor ripper
+(it is stored in ~/.thor/thor.yml file)
+
+Updating script can be done by:
+  thor update ripper
+
 === Rake
   rake cdparanoia["Music/Destination directory"]
   rake lame["Music/Destination directory"]
