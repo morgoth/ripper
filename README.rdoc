@@ -1,0 +1,33 @@
+= Convert your cd to mp3 files
+
+== Prerequisites
+
+* cdparanoia
+* lame
+
+You can install them by:
+  sudo apt-get install cdparanoia lame
+
+* Ruby
+* One of the gems:
+  * thor
+  * rake
+
+== Usage
+
+=== Thor
+  thor ripper:rip "Music/Destination directory"
+
+You can see all options by:
+  thor -T
+
+=== Rake
+  rake cdparanoia["Music/Destination directory"]
+  rake lame["Music/Destination directory"]
+
+You can see all options by:
+  rake -T
+
+== Copyright
+
+Copyright (c) 2010 Wojciech Wnętrzak. See LICENSE for details.
