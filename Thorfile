@@ -6,6 +6,7 @@ class Cd2mp3 < Thor
   def rip(dir = ".")
     invoke :cdparanoia, dir
     invoke :lame, dir
+    invoke :cleanup, dir
   end
 
   desc "cdparanoia DIR (defaults to '.')", "Rip cd to wav files"

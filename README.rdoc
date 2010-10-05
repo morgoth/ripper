@@ -10,7 +10,7 @@ You can install them by:
 
 * Ruby
 * One of the gems:
-  * thor
+  * thor (preferable)
   * rake
 
 == Usage
@@ -33,6 +33,7 @@ Updating script can be done by:
 === Rake
   rake cdparanoia["Music/Destination directory"]
   rake lame["Music/Destination directory"]
+  rake remove_wav["Music/Destination directory"]
 
 You can see all options by:
   rake -T
