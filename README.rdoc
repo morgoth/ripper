@@ -4,6 +4,7 @@
 
 * cdparanoia
 * lame
+* mplayer (for converting wma files to mp3)
 
 You can install them by:
   sudo apt-get install cdparanoia lame
@@ -16,7 +17,10 @@ You can install them by:
 == Usage
 
 === Thor
-  thor ripper:rip "Music/Destination directory"
+  thor ripper:disk "Music/Destination directory"
+
+Converting wma files to mp3:
+  thor ripper:wma "Music/Directory with wma files"
 
 You can see all options by:
   thor -T
