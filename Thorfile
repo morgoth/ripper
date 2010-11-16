@@ -1,5 +1,4 @@
-class Cd2mp3 < Thor
-  namespace :ripper
+class Ripper < Thor
   include Thor::Actions
 
   desc "disk DIR (defaults to '.')", "Rip cd to mp3"
@@ -42,6 +41,12 @@ class Cd2mp3 < Thor
         %x{mplayer -vo null -vc dummy -af resample=44100 -ao pcm:waveheader:file="#{wav_file}" "#{file}"}
       end
     end
+  end
+
+  desc "video FILE", "Compress given video file (output with avi extension)"
+  def video(file)
+    new_filename = (file.split(".")[0..-2] << "avi").join(".")
+    %x{mencoder #{file} -o #{new_filename} -ovc lavc -oac mp3lame}
   end
 
   desc "cleanup DIR EXTENSION (defaults to '.')", "Remove files with given extension"

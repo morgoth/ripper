@@ -1,10 +1,11 @@
-= Convert your cd to mp3 files
+= Convert your cd to mp3 files, compress video files
 
 == Prerequisites
 
 * cdparanoia
 * lame
 * mplayer (for converting wma files to mp3)
+* mencoder (for video compress)
 
 You can install them by:
   sudo apt-get install cdparanoia lame
@@ -22,11 +23,14 @@ You can install them by:
 Converting wma files to mp3:
   thor ripper:wma "Music/Directory with wma files"
 
+Compressing video files:
+  thor ripper:video your-wideo-file
+
 You can see all options by:
   thor -T
 
 When using thor you don't have to download Thorfile, simply just write:
-  thor install https://github.com/morgoth/cd2mp3/raw/master/Thorfile --as ripper --force
+  thor install https://github.com/morgoth/ripper/raw/master/Thorfile --as ripper --force
 
 Then you will have always available command thor ripper
 (it is stored in ~/.thor/thor.yml file)
