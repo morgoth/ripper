@@ -7,6 +7,12 @@
 * mplayer (for converting wma files to mp3)
 * mencoder (for video compress)
 
+For splitting flac files:
+
+* cuetools
+* shntool
+* flac
+
 You can install them by:
   sudo apt-get install cdparanoia lame
 
@@ -25,6 +31,9 @@ Converting wma files to mp3:
 
 Compressing video files:
   thor ripper:video your-wideo-file
+
+Splitting flac album file into separate ones
+  thor ripper:split "Directory with flac file"
 
 You can see all options by:
   thor -T
@@ -48,4 +57,4 @@ You can see all options by:
 
 == Copyright
 
-Copyright (c) 2010 Wojciech Wnętrzak. See LICENSE for details.
+Copyright (c) 2011 Wojciech Wnętrzak. See LICENSE for details.

@@ -49,6 +49,32 @@ class Ripper < Thor
     %x{mencoder #{file} -o #{new_filename} -ovc lavc -oac mp3lame}
   end
 
+  desc "split DIR", "Split flac album file into separate ones"
+  def split(dir = ".")
+    inside(dir, :verbose => true) do
+      # is there a better way to escape whitespace in file name?
+      cue_file = Dir.entries(".").find { |e| e =~ /\.cue$/ }.gsub(" ", '\ ')
+      flac_file = Dir.entries(".").find { |e| e =~ /\.flac$/ }.gsub(" ", '\ ')
+
+      # split files
+      %x{cuebreakpoints #{cue_file} | shnsplit -o flac -a ripper-split- #{flac_file}}
+
+      say("Copying metatags")
+      %x{cuetag #{cue_file} ripper-split-*.flac}
+
+      say("Renaming files")
+      Dir.entries(".").select { |f| f =~ /ripper-split/ }.sort.each do |file|
+        artist = %x{metaflac #{file} --show-tag=ARTIST}.strip.gsub("ARTIST=", "")
+        title = %x{metaflac #{file} --show-tag=TITLE}.strip.gsub("TITLE=", "")
+        track_number = %x{metaflac #{file} --show-tag=TRACKNUMBER}.strip.gsub("TRACKNUMBER=", "")
+        file_name = "#{track_number} - #{artist} - #{title}.flac"
+
+        say("Renaming #{file} to #{file_name}")
+        File.rename(file, file_name)
+      end
+    end
+  end
+
   desc "cleanup DIR EXTENSION (defaults to '.')", "Remove files with given extension"
   def cleanup(dir = ".", extension)
     inside(dir, :verbose => true) do
