@@ -2,6 +2,11 @@
 
 ## Prerequisites
 
+* Ruby
+* thor gem
+
+Packages:
+
 * cdparanoia
 * lame
 * mplayer (for converting wma files to mp3)
@@ -13,20 +18,9 @@ For splitting flac files:
 * shntool
 * flac
 
-You can install them by:
-
-```
-sudo apt-get install cdparanoia lame
-```
-
-* Ruby
-* One of the gems:
-  * thor (preferable)
-  * rake
-
 ## Usage
 
-### Thor
+Ripping CD to mp3 files:
 
 ```
 thor ripper:disk "Music/Destination directory"
@@ -69,20 +63,6 @@ Updating script can be done by:
 
 ```
   thor update ripper
-```
-
-### Rake
-
-```
-rake cdparanoia["Music/Destination directory"]
-rake lame["Music/Destination directory"]
-rake remove_wav["Music/Destination directory"]
-```
-
-You can see all options by:
-
-```
-rake -T
 ```
 
 ## Copyright

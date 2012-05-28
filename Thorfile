@@ -49,7 +49,7 @@ class Ripper < Thor
     %x{mencoder #{file} -o #{new_filename} -ovc lavc -oac mp3lame}
   end
 
-  desc "split DIR", "Split flac album file into separate ones"
+  desc "split DIR (defaults to '.')", "Split flac album file into separate ones"
   def split(dir = ".")
     inside(dir, :verbose => true) do
       # is there a better way to escape whitespace in file name?
