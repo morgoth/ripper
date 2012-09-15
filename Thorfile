@@ -97,7 +97,7 @@ class Ripper < Thor
           say "Resizing #{file}, to fit #{options[:width]}x#{options[:height]}"
 
           photo.resize_to_fit(options[:width], options[:height])
-          photo.write(File.basename(file)
+          photo.write(File.basename(file))
         end
       end
     end
