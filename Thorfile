@@ -83,4 +83,23 @@ class Ripper < Thor
       end
     end
   end
+
+  desc "resize_photos DIR", "Resizes photos to given dimensions"
+  method_option :width, type: :numeric, default: 2048, aliases: "-w", desc: "max width"
+  method_option :height, type: :numeric, default: 2048, aliases: "-h", desc: "max height"
+  def resize_photos(dir = ".")
+    # Requires imagemagick library
+    require "RMagick"
+    inside(dir, :verbose => true) do
+      Dir.entries(".").select { |e| e =~ /\.(jpg|jpeg|png|gif|bmp)$/i }.each do |file|
+        photo = Magick::Image.read(file).first
+        if photo.columns > options[:width] || photo.rows > options[:height]
+          say "Resizing #{file}, to fit #{options[:width]}x#{options[:height]}"
+
+          photo.resize_to_fit(options[:width], options[:height])
+          photo.write(File.basename(file)
+        end
+      end
+    end
+  end
 end

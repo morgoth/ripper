@@ -1,4 +1,4 @@
-# Convert your cd to mp3 files, compress video files
+# Convert your cd to mp3 files, compress video files, resize photos
 
 ## Prerequisites
 
@@ -11,6 +11,7 @@ Packages:
 * lame
 * mplayer (for converting wma files to mp3)
 * mencoder (for video compress)
+* imagemagick
 
 For splitting flac files:
 
@@ -42,6 +43,12 @@ Splitting flac album file into separate ones
 
 ```
 thor ripper:split "Directory with flac file"
+```
+
+Resizing photos when bigger than given dimensions
+
+```
+thor ripper:resize_photos --width 1024 --height 1024 "Directory with flac file"
 ```
 
 You can see all options by:
