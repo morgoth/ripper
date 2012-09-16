@@ -91,10 +91,14 @@ class Ripper < Thor
     # Requires imagemagick library
     require "RMagick"
     inside(dir, :verbose => true) do
-      Dir.entries(".").select { |e| e =~ /\.(jpg|jpeg|png|gif|bmp)$/i }.sort.each do |file|
+      entries = Dir.entries(".").select { |e| e =~ /\.(jpg|jpeg|png|gif|bmp)$/i }.sort
+      processed = 0
+      entries.each do |file|
         photo = Magick::Image.read(file).first
+        processed += 1
+        say "Processing #{file}, to fit #{options[:width]}x#{options[:height]} - #{processed}/#{entries.size}"
+        GC.start # problems with memory leaking by RMagick
         if photo.columns > options[:width] || photo.rows > options[:height]
-          say "Resizing #{file}, to fit #{options[:width]}x#{options[:height]}"
 
           photo.resize_to_fit!(options[:width], options[:height])
           photo.write(File.basename(file))

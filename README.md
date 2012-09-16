@@ -11,7 +11,7 @@ Packages:
 * lame
 * mplayer (for converting wma files to mp3)
 * mencoder (for video compress)
-* imagemagick
+* libmagickwand-dev, imagemagick (for resizing photos)
 
 For splitting flac files:
 
@@ -48,7 +48,7 @@ thor ripper:split "Directory with flac file"
 Resizing photos when bigger than given dimensions
 
 ```
-thor ripper:resize_photos --width 1024 --height 1024 "Directory with flac file"
+thor ripper:resize_photos --width 1024 --height 1024 "Directory with photo files"
 ```
 
 You can see all options by:
@@ -60,7 +60,7 @@ thor -T
 When using thor you don't have to download Thorfile, simply just write:
 
 ```
-  thor install https://github.com/morgoth/ripper/raw/master/Thorfile --as ripper --force
+thor install https://github.com/morgoth/ripper/raw/master/Thorfile --as ripper --force
 ```
 
 Then you will have always available command thor ripper
@@ -69,9 +69,9 @@ Then you will have always available command thor ripper
 Updating script can be done by:
 
 ```
-  thor update ripper
+thor update ripper
 ```
 
 ## Copyright
 
-Copyright (c) 2011 Wojciech Wnętrzak. See LICENSE for details.
+Copyright (c) Wojciech Wnętrzak. See LICENSE for details.
