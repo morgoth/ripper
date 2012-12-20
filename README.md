@@ -9,6 +9,7 @@ Packages:
 
 * cdparanoia
 * lame
+* flac
 * mplayer (for converting wma files to mp3)
 * mencoder (for video compress)
 * libmagickwand-dev, imagemagick (for resizing photos)
@@ -31,6 +32,12 @@ Converting wma files to mp3:
 
 ```
 thor ripper:wma "Music/Directory with wma files"
+```
+
+Converting flac files to mp3:
+
+```
+thor ripper:flac2mp3 "Music/flacs"
 ```
 
 Compressing video files:

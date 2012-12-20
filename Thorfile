@@ -15,6 +15,17 @@ class Ripper < Thor
     invoke :cleanup, [dir, "(wma)|(wav)"]
   end
 
+  desc "flac2mp3 DIR (defaults to '.')", "Convert flac to mp3"
+  def flac2mp3(dir = ".")
+    inside(dir, :verbose => true) do
+      Dir.entries(".").select { |e| e =~ /\.flac$/ }.sort.each do |file|
+        base_name = File.basename(file, ".flac")
+        mp3_file = base_name + ".mp3"
+        %x{flac -cd "#{file}" | lame -b 256 - "#{mp3_file}"}
+      end
+    end
+  end
+
   desc "cdparanoia DIR (defaults to '.')", "Rip cd to wav files"
   def cdparanoia(dir = ".")
     empty_directory(dir)
